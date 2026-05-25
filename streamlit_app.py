@@ -21,7 +21,7 @@ try:
     model = load_model()
     model_loaded = True
 except FileNotFoundError:
-    st.warning("⚠️ No trained model found. Run `python analysis.py` first.")
+    st.warning(" No trained model found. Run `python analysis.py` first.")
     model_loaded = False
 
 st.subheader("Enter Sneaker Details")
@@ -44,7 +44,7 @@ season_map = {12: "Winter", 1: "Winter", 2: "Winter", 3: "Spring", 4: "Spring", 
               6: "Summer", 7: "Summer", 8: "Summer", 9: "Fall", 10: "Fall", 11: "Fall"}
 sale_season = season_map[sale_month]
 
-if st.button("🔮 Predict Resale Premium", use_container_width=True, type="primary"):
+if st.button(" Predict Resale Premium", use_container_width=True, type="primary"):
     if model_loaded:
         
         brand_encoded  = ["Adidas", "Jordan", "New Balance", "Nike", "Other", "Yeezy"].index(brand) if brand in ["Adidas", "Jordan", "New Balance", "Nike", "Other", "Yeezy"] else 0
@@ -73,11 +73,11 @@ if st.button("🔮 Predict Resale Premium", use_container_width=True, type="prim
         col_c.metric("Est. Profit", f"${resale_price - retail_price:.0f}")
 
         if premium > 100:
-            st.success("🔥 High demand — strong resale potential")
+            st.success(" High demand — strong resale potential")
         elif premium > 40:
-            st.info("📈 Moderate resale premium — worth copping")
+            st.info(" Moderate resale premium — worth copping")
         else:
-            st.warning("📉 Low premium — may not be worth the effort")
+            st.warning(" Low premium — may not be worth the effort")
     else:
         st.error("Train the model first by running `python analysis.py`.")
 
