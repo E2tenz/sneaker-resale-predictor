@@ -1,7 +1,7 @@
 # 👟 Sneaker Resale Price Prediction
 **A machine learning project to predict sneaker resale premiums using StockX sales data**
 
-> Built as part of a data science portfolio — with real domain knowledge from running an active resale operation (Urban Cage).
+> Built as part of a data science portfolio — with real domain knowledge from running an active resale operation StockX.
 
 ---
 
