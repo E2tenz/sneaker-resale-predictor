@@ -1,7 +1,4 @@
-"""
-Sneaker Resale Predictor — Streamlit App
-Run: streamlit run app/streamlit_app.py
-"""
+
 
 import streamlit as st
 import pandas as pd
@@ -14,7 +11,7 @@ st.title("👟 Sneaker Resale Premium Predictor")
 st.markdown("Estimate how much above retail a sneaker will sell for, based on real StockX data.")
 st.divider()
 
-# ── Load model ──────────────────────────────
+
 @st.cache_resource
 def load_model():
     with open("models/best_model.pkl", "rb") as f:
@@ -27,7 +24,6 @@ except FileNotFoundError:
     st.warning("⚠️ No trained model found. Run `python analysis.py` first.")
     model_loaded = False
 
-# ── Input form ──────────────────────────────
 st.subheader("Enter Sneaker Details")
 
 col1, col2 = st.columns(2)
@@ -43,17 +39,14 @@ with col2:
     sale_month        = st.slider("Month of Sale", 1, 12, 6)
     is_limited        = st.checkbox("Limited Release?", value=True)
 
-# ── Derived features ────────────────────────
 size_demand_index = 1.0 if 9 <= shoe_size <= 11 else (0.7 if 7 <= shoe_size < 9 or 11 < shoe_size <= 13 else 0.4)
 season_map = {12: "Winter", 1: "Winter", 2: "Winter", 3: "Spring", 4: "Spring", 5: "Spring",
               6: "Summer", 7: "Summer", 8: "Summer", 9: "Fall", 10: "Fall", 11: "Fall"}
 sale_season = season_map[sale_month]
 
-# ── Predict ─────────────────────────────────
 if st.button("🔮 Predict Resale Premium", use_container_width=True, type="primary"):
     if model_loaded:
-        # NOTE: You'll need to match the encoding used during training.
-        # This is a placeholder — replace with your fitted LabelEncoders.
+        
         brand_encoded  = ["Adidas", "Jordan", "New Balance", "Nike", "Other", "Yeezy"].index(brand) if brand in ["Adidas", "Jordan", "New Balance", "Nike", "Other", "Yeezy"] else 0
         region_encoded = 0
         season_encoded = ["Fall", "Spring", "Summer", "Winter"].index(sale_season)
@@ -89,4 +82,4 @@ if st.button("🔮 Predict Resale Premium", use_container_width=True, type="prim
         st.error("Train the model first by running `python analysis.py`.")
 
 st.divider()
-st.caption("Built by Khalid | Urban Cage x UoA Data Science Portfolio")
+st.caption("Built by Khalid | StockX x UoA Data Science Portfolio")
