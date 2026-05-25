@@ -67,11 +67,3 @@ sneaker-resale-predictor/
 - Which shoe sizes are most in-demand (and most profitable)?
 - Does buyer region affect resale price?
 
----
-
-## 🚀 How to Run
-```bash
-pip install -r requirements.txt
-python analysis.py
-# or open notebooks/sneaker_analysis.ipynb in Jupyter
-```
